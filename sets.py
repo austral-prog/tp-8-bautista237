@@ -1,6 +1,3 @@
-from sets_categories_data import (ALCOHOLS)
-
-
 def clean_ingredients(dish_name, dish_ingredients):
     """Remove duplicates from `dish_ingredients`.
 
@@ -11,9 +8,10 @@ def clean_ingredients(dish_name, dish_ingredients):
     This function should return a `tuple` with the name of the dish as the first item,
     followed by the de-duped `set` of ingredients as the second item.
     """
+    return (dish_name, set(dish_ingredients))
 
-    return ()
 
+from sets_categories_data import ALCOHOLS
 
 def check_drinks(drink_name, drink_ingredients):
     """Append "Cocktail" (alcohol)  or "Mocktail" (no alcohol) to `drink_name`, based on `drink_ingredients`.
@@ -26,6 +24,7 @@ def check_drinks(drink_name, drink_ingredients):
     name followed by "Cocktail" (includes alcohol).
 
     """
-
-    return ""
-
+    if any(ingredient in ALCOHOLS for ingredient in drink_ingredients):
+        return f"{drink_name} Cocktail"
+    else:
+        return f"{drink_name} Mocktail"
